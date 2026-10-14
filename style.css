@@ -592,84 +592,77 @@ footer span:first-child {
 }
 
 
-/* Instagram: estilo romano */
-.instagram-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-
-    color: var(--gold);
-    border: 1px solid var(--gold);
-    background: var(--wine-dark);
-
-    transition:
-        background 0.25s ease,
-        color 0.25s ease,
-        transform 0.25s ease;
-}
-
-.instagram-icon {
-    flex-shrink: 0;
-    transition: transform 0.25s ease;
-}
-
-.instagram-link:hover {
-    color: var(--paper-light);
-    background: var(--wine);
-    border-color: var(--gold);
-}
-
-.instagram-link:hover .instagram-icon {
-    transform: scale(1.1);
-}
-
-.instagram-link:focus-visible {
-    outline: 2px solid var(--gold);
-    outline-offset: 4px;
-}
 
 
-/* Botones sociales con estética romana */
+/* ========================================
+   REDES SOCIALES: INSTAGRAM Y SPOTIFY
+   Estética romana · Responsive PC y móvil
+======================================== */
+
 .social-links {
     display: flex;
     flex-direction: column;
     align-items: stretch;
     gap: 10px;
+
+    width: 100%;
+    max-width: 280px;
     flex-shrink: 0;
     margin-left: auto;
 }
 
+/* Estilo común de los botones */
 .social-links .instagram-link,
 .social-links .spotify-link {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
+
     width: 100%;
-    margin-left: 0;
-    padding: 11px 15px;
+    min-width: 0;
+    margin: 0;
+    padding: 12px 14px;
 
     color: var(--gold);
     background: var(--wine-dark);
     border: 1px solid var(--gold);
+    border-radius: 3px;
 
+    font-family: var(--sans);
     font-size: 10px;
-    letter-spacing: 1px;
+    font-weight: normal;
+    letter-spacing: 0.7px;
+    line-height: 1.4;
+    text-align: center;
     text-decoration: none;
-    white-space: nowrap;
+    white-space: normal;
+
+    cursor: pointer;
 
     transition:
         background 0.25s ease,
         color 0.25s ease,
+        border-color 0.25s ease,
         transform 0.25s ease;
 }
 
+/* Tamaño y alineación de los iconos */
 .social-links .instagram-icon,
 .social-links .spotify-icon {
-    flex-shrink: 0;
+    display: block;
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
 }
 
+/* El texto también queda centrado */
+.social-links .instagram-link span,
+.social-links .spotify-link span {
+    text-align: center;
+}
+
+/* Efecto al pasar el cursor en PC */
 .social-links .instagram-link:hover,
 .social-links .spotify-link:hover {
     color: var(--paper-light);
@@ -678,14 +671,44 @@ footer span:first-child {
     transform: translateY(-2px);
 }
 
-.social-links a:focus-visible {
+/* Accesibilidad mediante teclado */
+.social-links .instagram-link:focus-visible,
+.social-links .spotify-link:focus-visible {
     outline: 2px solid var(--gold);
     outline-offset: 4px;
 }
 
+/* ========================================
+   TABLETS Y MÓVILES
+======================================== */
+
 @media (max-width: 600px) {
+    .contribute {
+        margin: 0 12px 40px;
+        padding: 20px 16px;
+        gap: 12px;
+    }
+
     .social-links {
         width: 100%;
+        max-width: none;
         margin-left: 0;
+        gap: 10px;
+    }
+
+    .social-links .instagram-link,
+    .social-links .spotify-link {
+        justify-content: center;
+        width: 100%;
+        padding: 13px 10px;
+        font-size: 10px;
+        letter-spacing: 0.5px;
+        transform: none;
+    }
+
+    /* Evita que el efecto de PC desplace los botones */
+    .social-links .instagram-link:hover,
+    .social-links .spotify-link:hover {
+        transform: none;
     }
 }
