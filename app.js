@@ -102,29 +102,45 @@
         }
     }
 
+    
     function createMarkerIcon(event) {
         const demo = event.demo === true || !isPublished(event);
 
         return L.divIcon({
             className: "roman-marker-container",
-            html: `<span style="
-        display:flex;
-        width:28px;
-        height:28px;
-        align-items:center;
-        justify-content:center;
-        border:2px solid #e5c78e;
-        border-radius:50%;
-        background:${demo ? "#8c6b38" : "#702e2b"};
-        color:#fff8e8;
-        font:bold 12px Georgia,serif;
-        box-shadow:0 2px 6px #241b1640
-      ">${demo ? "?" : "R"}</span>`,
-            iconSize: [28, 28],
-            iconAnchor: [14, 14],
-            popupAnchor: [0, -13]
+            html: demo
+                ? `<span style="
+                    display:flex;
+                    width:28px;
+                    height:28px;
+                    align-items:center;
+                    justify-content:center;
+                    border:2px solid #e5c78e;
+                    border-radius:50%;
+                    background:#8c6b38;
+                    color:#fff8e8;
+                    font:bold 12px Georgia,serif;
+                    box-shadow:0 2px 6px #241b1640;
+                ">?</span>`
+                : `<img
+                    src="event.png"
+                    alt=""
+                    style="
+                        display:block;
+                        width:32px;
+                        height:32px;
+                        border-radius:50%;
+                        object-fit:cover;
+                        border:none;
+                        box-shadow:none;
+                    "
+                >`,
+            iconSize: demo ? [32, 32] : [32, 32],
+            iconAnchor: [16, 16],
+            popupAnchor: [0, -16]
         });
     }
+
 
     function popupHTML(event) {
         const label = event.demo || !isPublished(event)

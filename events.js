@@ -13,7 +13,7 @@
 
 window.ROMAN_EVENTS = [
     {
-        id: "demo-tarraco-viva",
+        id: "tarraco-viva",
         name: "Recreación romana en Tarraco",
         city: "Tarragona",
         country: "España",
@@ -23,13 +23,13 @@ window.ROMAN_EVENTS = [
         dateStart: "2026-05-11",
         dateEnd: "2026-05-24",
         description:
-            "Ficha de demostración para un posible evento de recreación romana en el entorno histórico de Tarraco.",
+            "Evento de recreación romana en el entorno histórico de Tarraco.",
         organizer: "Tarraco Viva",
         sourceUrl: "https://tarracoviva.com/es/",
         demo: false
     },
     {
-        id: "demo-emerita-lvdica",
+        id: "emerita-lvdica",
         name: "Recreación romana en Emerita Augusta",
         city: "Mérida",
         country: "España",
@@ -39,9 +39,41 @@ window.ROMAN_EVENTS = [
         dateStart: "2026-05-18",
         dateEnd: "2026-05-24",
         description:
-            "Ficha de demostración para un posible evento de recreación romana en el entorno histórico de Tarraco.",
+            "Evento de recreación romana en el entorno histórico de Emerita Augusta.",
         organizer: "Emerita Lvdica",
         sourceUrl: "https://emerita-lvdica.es/",
+        demo: false
+    },
+    {
+        id: "arde-lucus",
+        name: "Recreación romana en Lucus Augusti",
+        city: "Lugo",
+        country: "España",
+        lat: 43.0121,
+        lng: -7.55585,
+        category: "festival",
+        dateStart: "2026-06-18",
+        dateEnd: "2026-06-21",
+        description:
+            "Evento de recreación romana en el entorno histórico de Lucus Augusti.",
+        organizer: "Arde Lucus",
+        sourceUrl: "https://ardelucus.com/",
+        demo: false
+    },
+    {
+        id: "complutum-renacida",
+        name: "Recreación romana en Complutum",
+        city: "Alcalá de Henares",
+        country: "España",
+        lat: 40.481815,
+        lng: -3.364305,
+        category: "festival",
+        dateStart: "2026-04-30",
+        dateEnd: "2026-05-03",
+        description:
+            "Evento de recreación romana en el entorno histórico de Complutum.",
+        organizer: "Complutum Renacida",
+        sourceUrl: "https://complutumrenacida.com/",
         demo: false
     },
     {
