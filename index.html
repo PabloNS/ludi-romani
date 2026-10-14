@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#241b16">
+    <meta name="description" content="Mapa europeo de eventos de recreación histórica romana.">
+    <title>Ludi Romani Europa | Atlas de recreación romana</title>
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="preconnect" href="https://tile.openstreetmap.org">
+    <link rel="stylesheet"
+          href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script defer src="events.js"></script>
+    <script defer src="app.js"></script>
+</head>
+<body>
+<header class="masthead">
+    <a class="brand" href="./" aria-label="Ludi Romani Europa, inicio">
+        <span class="brand-symbol" aria-hidden="true">SPQR</span>
+        <span>
+        <span class="eyebrow">ATLAS EUROPAE</span>
+        <strong>LUDI ROMANI</strong>
+        <span class="brand-subtitle">Calendario de recreación histórica</span>
+      </span>
+    </a>
+    <a class="header-link" href="#eventos">EXPLORAR EVENTOS ↘</a>
+</header>
+
+<main>
+    <section class="intro">
+        <p class="eyebrow">ROMA · HISTORIA · RECREACIÓN</p>
+        <h1>El mundo romano,<br><em>vivo de nuevo.</em></h1>
+        <p class="intro-copy">
+            Explora festivales, campamentos, combates históricos y encuentros
+            de recreación romana por toda Europa.
+        </p>
+        <div class="intro-meta">
+            <span>⌖ EUROPA</span>
+            <span>✦ EVENTOS HISTÓRICOS</span>
+            <span>◈ MAPA INTERACTIVO</span>
+        </div>
+    </section>
+
+    <section class="explorer" aria-label="Explorador de eventos">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">TABULA EUROPAE</p>
+                <h2>Explora el mapa</h2>
+            </div>
+            <span id="result-count" class="result-count">Cargando eventos…</span>
+        </div>
+
+        <div class="filters">
+            <label class="search-field">
+                <span>Buscar</span>
+                <input id="search" type="search"
+                       placeholder="Evento, ciudad o país…">
+            </label>
+
+            <label>
+                <span>País</span>
+                <select id="country">
+                    <option value="">Toda Europa</option>
+                </select>
+            </label>
+
+            <label>
+                <span>Tipo de evento</span>
+                <select id="category">
+                    <option value="">Todas las categorías</option>
+                    <option value="festival">Festival romano</option>
+                    <option value="military">Legiones y campamentos</option>
+                    <option value="gladiators">Gladiadores</option>
+                    <option value="living-history">Vida cotidiana</option>
+                    <option value="market">Mercados y ferias</option>
+                </select>
+            </label>
+
+            <label>
+                <span>Año</span>
+                <select id="year">
+                    <option value="">Todos los años</option>
+                </select>
+            </label>
+
+            <button id="reset" class="reset-button" type="button">
+                Limpiar filtros
+            </button>
+        </div>
+
+        <div class="map-frame">
+            <div id="map" aria-label="Mapa interactivo de eventos romanos"></div>
+            <!--<div class="map-legend">
+                <span class="legend-dot"></span>
+                <span>Evento publicado</span>
+                <span class="legend-demo">DEMO</span>
+                <span>Marcador de ejemplo</span>
+            </div>-->
+        </div>
+
+        <!--<p class="map-note">
+            Los marcadores de demostración no representan eventos confirmados.
+            Verifica las fechas con los organizadores antes de viajar.
+        </p>-->
+    </section>
+
+    <section id="eventos" class="events-section">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">ACTA ET CONVENTUS</p>
+                <h2>Eventos del atlas</h2>
+            </div>
+            <span class="section-side-note">Descubre · Filtra · Planifica</span>
+        </div>
+
+        <div id="event-list" class="event-grid" aria-live="polite"></div>
+        <p id="empty-state" class="empty-state" hidden>
+            No hay eventos que coincidan con estos filtros.
+            Prueba con otro país, año o categoría.
+        </p>
+    </section>
+
+    <section class="contribute">
+        <span class="contribute-symbol" aria-hidden="true">✦</span>
+        <div>
+            <p class="eyebrow">CONTRIBUE AL ATLAS</p>
+            <h2>¿Conoces un evento romano?</h2>
+            <p>
+                Añade festivales, recreaciones militares, mercados o jornadas
+                históricas editando el archivo de datos del proyecto.
+            </p>
+        </div>
+        <a class="outline-button" href="https://github.com/"
+           target="_blank" rel="noopener noreferrer">
+            IR A GITHUB ↗
+        </a>
+    </section>
+</main>
+
+<footer>
+    <span>LUDI ROMANI EUROPA</span>
+    <span>Un atlas para amantes de la historia antigua.</span>
+    <span>Mapa © OpenStreetMap</span>
+</footer>
+</body>
+</html>
