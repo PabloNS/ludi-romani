@@ -590,3 +590,102 @@ footer span:first-child {
         font-size: 12px;
     }
 }
+
+
+/* Instagram: estilo romano */
+.instagram-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    background: var(--wine-dark);
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.instagram-icon {
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+}
+
+.instagram-link:hover {
+    color: var(--paper-light);
+    background: var(--wine);
+    border-color: var(--gold);
+}
+
+.instagram-link:hover .instagram-icon {
+    transform: scale(1.1);
+}
+
+.instagram-link:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 4px;
+}
+
+
+/* Botones sociales con estética romana */
+.social-links {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    flex-shrink: 0;
+    margin-left: auto;
+}
+
+.social-links .instagram-link,
+.social-links .spotify-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    margin-left: 0;
+    padding: 11px 15px;
+
+    color: var(--gold);
+    background: var(--wine-dark);
+    border: 1px solid var(--gold);
+
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    white-space: nowrap;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.social-links .instagram-icon,
+.social-links .spotify-icon {
+    flex-shrink: 0;
+}
+
+.social-links .instagram-link:hover,
+.social-links .spotify-link:hover {
+    color: var(--paper-light);
+    background: var(--wine);
+    border-color: var(--gold);
+    transform: translateY(-2px);
+}
+
+.social-links a:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 4px;
+}
+
+@media (max-width: 600px) {
+    .social-links {
+        width: 100%;
+        margin-left: 0;
+    }
+}
