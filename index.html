@@ -125,16 +125,15 @@
     <section class="contribute">
         <span class="contribute-symbol" aria-hidden="true">✦</span>
         <div>
-            <p class="eyebrow">CONTRIBUE AL ATLAS</p>
+            <p class="eyebrow">CONTRIBUYE AL ATLAS</p>
             <h2>¿Conoces un evento romano?</h2>
             <p>
-                Añade festivales, recreaciones militares, mercados o jornadas
-                históricas editando el archivo de datos del proyecto.
+                Contáctame: pablonuserra@gmai.com
             </p>
         </div>
-        <a class="outline-button" href="https://github.com/"
+        <a class="outline-button" href="https://instagram.com/pablons_composer"
            target="_blank" rel="noopener noreferrer">
-            IR A GITHUB ↗
+            SÍGUEME EN INSTAGRAM ↗
         </a>
     </section>
 </main>
@@ -144,5 +143,49 @@
     <span>Un atlas para amantes de la historia antigua.</span>
     <span>Mapa © OpenStreetMap</span>
 </footer>
+
+<!-- Música ambiental romana -->
+<audio id="background-music" loop preload="auto">
+    <source src="senate.mp3" type="audio/mpeg">
+</audio>
+
+<button id="music-toggle"
+        class="music-button"
+        type="button"
+        aria-pressed="false">
+    ♫ Activar música
+</button>
+
+<script>
+    const music = document.getElementById('background-music');
+    const musicToggle = document.getElementById('music-toggle');
+
+    musicToggle.addEventListener('click', async () => {
+        if (music.paused) {
+            try {
+                await music.play();
+                musicToggle.textContent = '♫ Pausar música';
+                musicToggle.setAttribute('aria-pressed', 'true');
+            } catch (error) {
+                musicToggle.textContent = 'Error al reproducir';
+            }
+        } else {
+            music.pause();
+            musicToggle.textContent = '♫ Activar música';
+            musicToggle.setAttribute('aria-pressed', 'false');
+        }
+    });
+
+    music.addEventListener('play', () => {
+        musicToggle.textContent = '♫ Pausar música';
+        musicToggle.setAttribute('aria-pressed', 'true');
+    });
+
+    music.addEventListener('pause', () => {
+        musicToggle.textContent = '♫ Activar música';
+        musicToggle.setAttribute('aria-pressed', 'false');
+    });
+</script>
+
 </body>
 </html>
