@@ -12,7 +12,9 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <link rel="stylesheet" href="style.css">
     <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script defer src="events.js"></script>
+    <script defer src="events-europe.js"></script>
+    <script defer src="associations-europe.js"></script>
+    <script defer src="shops-europe.js"></script>
     <script defer src="app.js"></script>
 </head>
 
@@ -26,7 +28,13 @@
                 <span class="brand-subtitle">Calendario de recreación histórica</span>
             </span>
         </a>
-        <a class="header-link" href="#eventos">EXPLORAR EVENTOS ↘</a>
+
+        <nav class="header-navigation" aria-label="Navegación principal">
+            <a class="header-link" href="#eventos">EVENTOS</a>
+            <a class="header-link" href="#asociaciones">ASOCIACIONES</a>
+            <a class="header-link" href="#tiendas">TIENDAS</a>
+        </nav>
+
     </header>
 
     <main>
@@ -121,6 +129,68 @@
                 Prueba con otro país, año o categoría.
             </p>
         </section>
+
+
+
+        <!-- ASOCIACIONES -->
+        <section id="asociaciones" class="directory-section">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">SOCIETATES ROMANAE</p>
+                    <h2>Asociaciones y grupos</h2>
+                </div>
+                <span id="association-count" class="result-count"></span>
+            </div>
+
+            <p class="directory-intro">
+                Descubre asociaciones y grupos de recreación histórica
+                romana por toda Europa.
+            </p>
+
+            <div id="association-list" class="directory-grid"></div>
+
+            <p id="association-empty" class="empty-state" hidden>
+                Estamos ampliando el directorio de asociaciones.
+            </p>
+        </section>
+
+        <!-- TIENDAS -->
+        <section id="tiendas" class="directory-section shop-section">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">MERCATO ROMANO</p>
+                    <h2>Tiendas para recreadores</h2>
+                </div>
+                <span id="shop-count" class="result-count"></span>
+            </div>
+
+            <p class="directory-intro">
+                Descubre tiendas especializadas en equipamiento,
+                indumentaria y materiales para recreación histórica.
+            </p>
+
+            <div id="shop-list" class="directory-grid shop-grid"></div>
+
+            <p id="shop-empty" class="empty-state" hidden>
+                Próximamente, más tiendas especializadas.
+            </p>
+
+            <div class="sponsor-banner">
+                <div>
+                    <p class="eyebrow">COLABORA CON EL ATLAS</p>
+                    <h3>¿Tienes una tienda de recreación histórica?</h3>
+                    <p>
+                        Consulta las opciones para anunciar tu tienda
+                        y llegar a una comunidad apasionada por la historia.
+                    </p>
+                </div>
+                <a class="sponsor-button"
+                    href="mailto:pablonuserra.composer@gmail.com?subject=Publicidad%20y%20colaboracion%20con%20Ludi%20Romani">
+                    ANUNCIAR MI TIENDA ↗
+                </a>
+            </div>
+        </section>
+
 
         <section class="contribute">
             <span class="contribute-symbol" aria-hidden="true">✦</span>

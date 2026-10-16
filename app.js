@@ -348,11 +348,134 @@
         render();
     }
 
+
+    function safeExternalURL(value) {
+        try {
+            const url = new URL(value);
+
+            if (url.protocol === "https:" || url.protocol === "http:") {
+                return url.href;
+            }
+        } catch {
+            // URL no válida
+        }
+
+        return "";
+    }
+
+    function renderAssociations() {
+        const associations = Array.isArray(window.ROMAN_ASSOCIATIONS)
+            ? window.ROMAN_ASSOCIATIONS
+            : [];
+
+        const container = el("association-list");
+        const empty = el("association-empty");
+
+        el("association-count").textContent =
+            `${associations.length} ${associations.length === 1 ? "asociación" : "asociaciones"}`;
+
+        container.innerHTML = associations.map((item) => {
+            const website = safeExternalURL(item.website);
+            const instagram = safeExternalURL(item.instagram);
+
+            return `
+            <article class="directory-card">
+                <span class="directory-symbol" aria-hidden="true">
+                    ${escapeHTML(item.country || "EU")}
+                </span>
+                <p class="eyebrow">
+                    ${escapeHTML(item.category || "Recreación romana")}
+                </p>
+                <h3>${escapeHTML(item.name)}</h3>
+                <p class="event-location">
+                    ${escapeHTML(item.city || "")}${item.city && item.country ? ", " : ""}${escapeHTML(item.country || "")}
+                </p>
+                <p>${escapeHTML(item.description || "")}</p>
+                <div class="directory-actions">
+                    ${website ? `
+                        <a class="directory-link"
+                           href="${escapeHTML(website)}"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            WEB OFICIAL ↗
+                        </a>` : ""}
+                    ${instagram ? `
+                        <a class="directory-link"
+                           href="${escapeHTML(instagram)}"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            INSTAGRAM ↗
+                        </a>` : ""}
+                </div>
+            </article>
+        `;
+        }).join("");
+
+        empty.hidden = associations.length > 0;
+    }
+
+    function renderShops() {
+        const shops = Array.isArray(window.ROMAN_SHOPS)
+            ? window.ROMAN_SHOPS
+            : [];
+
+        const container = el("shop-list");
+        const empty = el("shop-empty");
+
+        el("shop-count").textContent =
+            `${shops.length} ${shops.length === 1 ? "tienda" : "tiendas"}`;
+
+        container.innerHTML = shops.map((item) => {
+            const website = safeExternalURL(item.website);
+
+            return `
+            <article class="directory-card shop-card">
+                ${item.sponsored === true
+                    ? '<span class="shop-label">PATROCINADO</span>'
+                    : '<span class="shop-label">TIENDA DEL DIRECTORIO</span>'}
+
+                <div class="shop-monogram" aria-hidden="true">
+                    ${escapeHTML(item.logoText || "ROMA")}
+                </div>
+
+                <p class="eyebrow">
+                    ${escapeHTML(item.category || "Recreación histórica")}
+                </p>
+
+                <h3>${escapeHTML(item.name)}</h3>
+
+                <p class="event-location">
+                    ${escapeHTML(item.country || "")}
+                </p>
+
+                <p>${escapeHTML(item.description || "")}</p>
+
+                ${website ? `
+                    <a class="directory-link"
+                       href="${escapeHTML(website)}"
+                       target="_blank"
+                       rel="noopener noreferrer${item.sponsored === true ? ' sponsored' : ''}">
+                        VISITAR TIENDA ↗
+                    </a>` : ""}
+            </article>
+        `;
+        }).join("");
+
+        empty.hidden = shops.length > 0;
+    }
+
+    function renderDirectories() {
+        renderAssociations();
+        renderShops();
+    }
+
+
     function start() {
         if (!initializeMap()) return;
 
         fillFilters();
         render();
+        renderDirectories();
 
         ["search", "country", "category", "year"].forEach((id) => {
             el(id).addEventListener("input", render);
