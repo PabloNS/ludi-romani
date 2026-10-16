@@ -63,7 +63,9 @@ a {
     letter-spacing: 1px;
 }
 
-.brand strong, .brand-subtitle, .eyebrow {
+.brand strong,
+.brand-subtitle,
+.eyebrow {
     display: block;
 }
 
@@ -95,7 +97,8 @@ a {
     text-decoration: none;
 }
 
-.header-link:hover, .outline-button:hover {
+.header-link:hover,
+.outline-button:hover {
     color: var(--gold);
 }
 
@@ -136,7 +139,8 @@ a {
     letter-spacing: 1px;
 }
 
-.explorer, .events-section {
+.explorer,
+.events-section {
     max-width: 1450px;
     padding: 60px clamp(18px, 5vw, 70px);
     margin: auto;
@@ -150,12 +154,14 @@ a {
     margin-bottom: 24px;
 }
 
-.section-heading h2, .contribute h2 {
+.section-heading h2,
+.contribute h2 {
     margin: 0;
     font: normal clamp(29px, 4vw, 42px)/1.15 var(--serif);
 }
 
-.result-count, .section-side-note {
+.result-count,
+.section-side-note {
     color: var(--muted);
     font-size: 12px;
 }
@@ -176,11 +182,14 @@ a {
     font-weight: bold;
 }
 
-input, select, button {
+input,
+select,
+button {
     font: inherit;
 }
 
-.filters input, .filters select {
+.filters input,
+.filters select {
     width: 100%;
     min-width: 0;
     height: 44px;
@@ -191,7 +200,8 @@ input, select, button {
     border-radius: 2px;
 }
 
-.filters input:focus, .filters select:focus {
+.filters input:focus,
+.filters select:focus {
     outline: 2px solid var(--gold);
     outline-offset: 1px;
 }
@@ -330,7 +340,8 @@ input, select, button {
     margin-top: 15px;
 }
 
-.event-actions button, .event-actions a {
+.event-actions button,
+.event-actions a {
     padding: 0;
     color: var(--wine);
     background: none;
@@ -484,7 +495,8 @@ footer span:first-child {
         font-size: 9px;
     }
 
-    .explorer, .events-section {
+    .explorer,
+    .events-section {
         padding: 40px 17px;
     }
 

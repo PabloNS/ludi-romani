@@ -102,7 +102,7 @@
         }
     }
 
-    
+
     function createMarkerIcon(event) {
         const demo = event.demo === true || !isPublished(event);
 
@@ -131,7 +131,7 @@
                         height:32px;
                         border-radius:50%;
                         object-fit:cover;
-                        border:none;
+                        border:2px solid #702e2b;
                         box-shadow:none;
                     "
                 >`,
@@ -143,15 +143,23 @@
 
 
     function popupHTML(event) {
-        const label = event.demo || !isPublished(event)
-            ? '<span class="popup-demo">DEMOSTRACIÓN / POR VERIFICAR</span>'
-            : '<span class="popup-demo">FUENTE DISPONIBLE</span>';
+        const published = isPublished(event);
+
+        const label = published
+            ? `<a
+            class="popup-demo"
+            href="${escapeHTML(event.sourceUrl)}"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="text-decoration: underline; cursor: pointer;"
+          >FUENTE OFICIAL ↗</a>`
+            : '<span class="popup-demo">POR VERIFICAR</span>';
 
         return `
-      <div class="popup-title">${escapeHTML(event.name)}</div>
-      <div>${escapeHTML(event.city)}, ${escapeHTML(event.country)}</div>
-      <p>${escapeHTML(eventDateLabel(event))}</p>
-      ${label}
+        <div class="popup-title">${escapeHTML(event.name)}</div>
+        <div>${escapeHTML(event.city)}, ${escapeHTML(event.country)}</div>
+        <p>${escapeHTML(eventDateLabel(event))}</p>
+        ${label}
     `;
     }
 
@@ -270,8 +278,8 @@
         <div class="event-tags">
           <span class="tag">${escapeHTML(category)}</span>
           ${demo
-            ? '<span class="tag demo">DEMO · NO CONFIRMADO</span>'
-            : '<span class="tag">FUENTE APORTADA</span>'}
+                ? '<span class="tag demo">NO CONFIRMADO</span>'
+                : '<span class="tag">FUENTE APORTADA</span>'}
         </div>
         <h3>${escapeHTML(event.name)}</h3>
         <p class="event-location">
@@ -323,7 +331,7 @@
 
         if (!event || !marker || !map) return;
 
-        map.flyTo([event.lat, event.lng], 8, {duration: 0.6});
+        map.flyTo([event.lat, event.lng], 8, { duration: 0.6 });
         marker.openPopup();
 
         el("map").scrollIntoView({
