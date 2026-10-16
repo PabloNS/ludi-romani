@@ -368,13 +368,21 @@
             ? window.ROMAN_ASSOCIATIONS
             : [];
 
+        const selectedCountry = el("association-country").value;
+
+        const filteredAssociations = selectedCountry
+            ? associations.filter(
+                (item) => item.country?.trim() === selectedCountry
+            )
+            : associations;
+
         const container = el("association-list");
         const empty = el("association-empty");
 
         el("association-count").textContent =
-            `${associations.length} ${associations.length === 1 ? "asociación" : "asociaciones"}`;
+            `${filteredAssociations.length} ${filteredAssociations.length === 1 ? "asociación" : "asociaciones"}`;
 
-        container.innerHTML = associations.map((item) => {
+        container.innerHTML = filteredAssociations.map((item) => {
             const website = safeExternalURL(item.website);
             const instagram = safeExternalURL(item.instagram);
 
@@ -411,7 +419,7 @@
         `;
         }).join("");
 
-        empty.hidden = associations.length > 0;
+        empty.hidden = filteredAssociations.length > 0;
     }
 
     function renderShops() {
@@ -419,13 +427,21 @@
             ? window.ROMAN_SHOPS
             : [];
 
+        const selectedCountry = el("shop-country").value;
+
+        const filteredShops = selectedCountry
+            ? shops.filter(
+                (item) => item.country?.trim() === selectedCountry
+            )
+            : shops;
+
         const container = el("shop-list");
         const empty = el("shop-empty");
 
         el("shop-count").textContent =
-            `${shops.length} ${shops.length === 1 ? "tienda" : "tiendas"}`;
+            `${filteredShops.length} ${filteredShops.length === 1 ? "tienda" : "tiendas"}`;
 
-        container.innerHTML = shops.map((item) => {
+        container.innerHTML = filteredShops.map((item) => {
             const website = safeExternalURL(item.website);
 
             return `
@@ -464,9 +480,56 @@
         empty.hidden = shops.length > 0;
     }
 
+    function fillCountryOptions(selectId, items) {
+        const select = el(selectId);
+        if (!select) return;
+
+        const selectedCountry = select.value;
+
+        const countries = [...new Set(
+            items
+                .map((item) => item.country?.trim())
+                .filter(Boolean)
+        )].sort((a, b) => a.localeCompare(b, "es"));
+
+        select.innerHTML = `
+        <option value="">Todos los países</option>
+        ${countries.map((country) => `
+            <option value="${escapeHTML(country)}">
+                ${escapeHTML(country)}
+            </option>
+        `).join("")}
+    `;
+
+        if (countries.includes(selectedCountry)) {
+            select.value = selectedCountry;
+        }
+    }
+
     function renderDirectories() {
+        const associations = Array.isArray(window.ROMAN_ASSOCIATIONS)
+            ? window.ROMAN_ASSOCIATIONS
+            : [];
+
+        const shops = Array.isArray(window.ROMAN_SHOPS)
+            ? window.ROMAN_SHOPS
+            : [];
+
+        fillCountryOptions("association-country", associations);
+        fillCountryOptions("shop-country", shops);
+
         renderAssociations();
         renderShops();
+
+        el("association-country").addEventListener(
+            "change",
+            renderAssociations
+        );
+
+        el("shop-country").addEventListener(
+            "change",
+            renderShops
+        );
     }
 
 

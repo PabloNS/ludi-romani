@@ -940,3 +940,45 @@ footer span:first-child {
 .directory-card .directory-link {
     overflow-wrap: anywhere;
 }
+
+
+.directory-toolbar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 22px 0;
+}
+
+.directory-toolbar label {
+    color: var(--muted);
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.directory-country-filter {
+    min-width: 210px;
+    padding: 11px 14px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--paper-light);
+    color: var(--ink);
+    font: inherit;
+    cursor: pointer;
+}
+
+.directory-country-filter:focus {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+    .directory-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .directory-country-filter {
+        width: 100%;
+    }
+}
