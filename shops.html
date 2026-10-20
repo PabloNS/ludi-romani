@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#241b16">
+    <meta name="description" content="Mapa europeo de eventos de recreación histórica romana.">
+    <title>Ludi Romani | Tiendas</title>
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="preconnect" href="https://tile.openstreetmap.org">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="style.css">
+
+    <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script defer src="shops-list.js"></script>
+    <script defer src="app.js"></script>
+
+    <link rel="icon" type="image/png" href="./favicon.png">
+</head>
+
+<body>
+    <header class="masthead">
+        <a class="brand" href="./" aria-label="Ludi Romani Europa, inicio">
+            <img
+                class="brand-symbol"
+                src="./favicon.png"
+                alt=""
+                aria-hidden="true"
+            >
+            <span>
+                <span class="eyebrow">ATLAS EUROPAE</span>
+                <strong>LUDI ROMANI</strong>
+                <span class="brand-subtitle">Calendario de recreación histórica</span>
+            </span>
+        </a>
+
+        <nav class="header-navigation" aria-label="Navegación principal">
+            <a class="header-link" href="index.html" aria-current="page">INICIO</a>
+            <a class="header-link" href="events.html#eventos">EVENTOS</a>
+            <a class="header-link" href="associations.html#asociaciones">ASOCIACIONES</a>
+        </nav>
+
+    </header>
+
+    <main>
+        <section class="intro">
+            <p class="eyebrow">ROMA · HISTORIA · RECREACIÓN</p>
+            <h1>El mundo romano,<br><em>vivo de nuevo.</em></h1>
+            <p class="intro-copy">
+                Explora festivales, campamentos, combates históricos y encuentros
+                de recreación romana por toda Europa.
+            </p>
+            <div class="intro-meta">
+                <span>⌖ EUROPA</span>
+                <span>✦ EVENTOS HISTÓRICOS</span>
+                <span>◈ MAPA INTERACTIVO</span>
+            </div>
+        </section>
+
+        <section id="tiendas" class="directory-section shop-section">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">MERCATO ROMANO</p>
+                    <h2>Tiendas para recreadores</h2>
+                </div>
+                <span id="shop-count" class="result-count"></span>
+            </div>
+
+            <p class="directory-intro">
+                Descubre tiendas especializadas en equipamiento,
+                indumentaria y materiales para recreación histórica.
+            </p>
+
+            <div class="directory-toolbar">
+                <label for="shop-country">Filtrar por país</label>
+                <select id="shop-country" class="directory-country-filter">
+                    <option value="">Todos los países</option>
+                </select>
+            </div>
+
+            <div id="shop-list" class="directory-grid shop-grid"></div>
+
+            <p id="shop-empty" class="empty-state" hidden>
+                Próximamente, más tiendas especializadas.
+            </p>
+
+            <div class="sponsor-banner">
+                <div>
+                    <p class="eyebrow">COLABORA CON EL ATLAS</p>
+                    <h3>¿Tienes una tienda de recreación histórica?</h3>
+                    <p>
+                        Consulta las opciones para anunciar tu tienda
+                        y llegar a una comunidad apasionada por la historia.
+                    </p>
+                </div>
+                <a class="sponsor-button"
+                    href="mailto:pablonuserra.composer@gmail.com?subject=Publicidad%20y%20colaboración%20con%20Ludi%20Romani">
+                    ANUNCIAR MI TIENDA ↗
+                </a>
+            </div>
+        </section>
+
+        <section class="contribute">
+            <span class="contribute-symbol" aria-hidden="true">✦</span>
+            <div>
+                <p class="eyebrow">CONTRIBUYE AL ATLAS</p>
+                <h2>¿Conoces un evento romano?</h2>
+                <p>
+                    Contáctame:
+                    <a href="mailto:pablonuserra.composer@gmail.com">
+                        pablonuserra.composer@gmail.com
+                    </a>
+                </p>
+            </div>
+
+            <div class="social-links">
+
+                <a class="outline-button instagram-link" href="https://instagram.com/pablons_composer" target="_blank"
+                    rel="noopener noreferrer" aria-label="Sígueme en Instagram">
+                    <svg class="instagram-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20"
+                        height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+                        stroke-linejoin="round" aria-hidden="true">
+                        <rect x="3" y="3" width="18" height="18" rx="5" />
+                        <circle cx="12" cy="12" r="4" />
+                        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+                    </svg>
+                    <span>SÍGUEME EN INSTAGRAM ↗</span>
+                </a>
+
+                <a class="outline-button spotify-link"
+                    href="https://open.spotify.com/intl-es/artist/0LLxSOgx1tyv5QwvCBpX6V?si=Galm--S9RaWsZ9Rw2N6UTQ"
+                    target="_blank" rel="noopener noreferrer" aria-label="Escucha mi música en Spotify">
+                    <svg class="spotify-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20"
+                        height="20" fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.59 14.42a.75.75 0 0 1-1.03.25c-2.82-1.72-6.37-2.11-10.56-1.16a.75.75 0 1 1-.33-1.46c4.58-1.05 8.5-.6 11.67 1.34.35.21.46.68.25 1.03Zm1.34-2.98a.94.94 0 0 1-1.29.31c-3.23-1.99-8.15-2.56-11.97-1.4a.94.94 0 1 1-.55-1.8c4.36-1.32 9.78-.68 13.5 1.6.44.27.58.85.31 1.29Zm.12-3.1c-3.88-2.3-10.28-2.51-13.99-1.39a1.13 1.13 0 1 1-.65-2.17c4.26-1.29 11.34-1.04 15.81 1.61a1.13 1.13 0 0 1-1.17 1.95Z" />
+                    </svg>
+                    <span>ESCUCHA MI MÚSICA ↗</span>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <span>LUDI ROMANI EUROPA</span>
+        <span id="copyright-year">© Pablo Núñez Serra. Todos los derechos reservados.</span>
+        <span>Mapa © OpenStreetMap</span>
+    </footer>
+
+    <audio id="background-music" loop preload="auto">
+        <source src="senate.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="music-toggle" class="music-button" type="button" aria-pressed="false">
+        ♫ Activar música
+    </button>
+
+    <script src="music.js"></script>
+
+    <script>
+        document.getElementById("copyright-year").textContent = document.getElementById("copyright-year").textContent + " " +
+            new Date().getFullYear();
+    </script>
+</body>
+
+</html>
